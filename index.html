@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20/10 - Dành Tặng Em Yêu 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Falling Hearts */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff69b4;
+            animation: fall linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        /* Main Card */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeInScale 1s ease-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Title Animation */
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Flower Container */
+        .flower-container {
+            margin: 30px 0;
+            position: relative;
+            height: 150px;
+        }
+
+        .flower {
+            display: inline-block;
+            font-size: 60px;
+            margin: 0 10px;
+            animation: grow 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .flower:nth-child(1) { animation-delay: 0.2s; }
+        .flower:nth-child(2) { animation-delay: 0.4s; }
+        .flower:nth-child(3) { animation-delay: 0.6s; }
+        .flower:nth-child(4) { animation-delay: 0.8s; }
+        .flower:nth-child(5) { animation-delay: 1s; }
+
+        @keyframes grow {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Message */
+        .message {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #333;
+            margin: 30px 0;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button */
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeIn 2s ease-out 1.5s both;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Hidden Message */
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden-message h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .hidden-message p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Floating Animation for decorative elements */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .date {
+            font-size: 28px;
+            color: #ff69b4;
+            font-weight: bold;
+            margin-bottom: 10px;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="date">20 / 10 / 2025</div>
+            <h1 class="title">💝 Chúc Mừng Ngày Phụ Nữ Việt Nam 💝</h1>
+            
+            <div class="flower-container">
+                <span class="flower">🌹</span>
+                <span class="flower">🌷</span>
+                <span class="flower">🌺</span>
+                <span class="flower">🌸</span>
+                <span class="flower">🌻</span>
+            </div>
+
+            <div class="message">
+                <p>💕 <strong>Gửi em yêu của anh,</strong> 💕</p>
+                <p>Chúc em ngày 20/10 thật vui vẻ, hạnh phúc!</p>
+                <p>Luôn xinh đẹp, tươi trẻ và rạng rỡ như hoa!</p>
+                <p>Cảm ơn em đã luôn ở bên cạnh anh ❤️</p>
+            </div>
+
+            <button class="btn" onclick="showMessage()">💌 Nhấn Vào Đây Nè! 💌</button>
+
+            <div id="hiddenMessage" class="hidden-message">
+                <h3>🎁 Lời Nhắn Đặc Biệt 🎁</h3>
+                <p>Em là ánh sáng trong cuộc đời anh,</p>
+                <p>Là niềm vui mỗi ngày anh thức dậy,</p>
+                <p>Là lý do anh luôn mỉm cười.</p>
+                <p><strong>Anh yêu em nhiều lắm! 💗💗💗</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        setInterval(createSparkle, 200);
+
+        // Show hidden message
+        function showMessage() {
+            const message = document.getElementById('hiddenMessage');
+            if (message.style.display === 'none' || message.style.display === '') {
+                message.style.display = 'block';
+            } else {
+                message.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
